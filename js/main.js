@@ -1,17 +1,24 @@
 (function() {
-	var map, marker;
+	//i dont work in crome
+	var map = new google.maps.Map(document.querySelector('.mapWraper')), marker;
 
-	function initMap(){
-		map = new google.maps.Map(document.querySelector('.mapWraper'),{
-			center : { lat: 42.983233, lng: -81.250688 },
-			zoom : 14
+	function initMap(position){
+		map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+			map.setZoom(14);
+			
+			marker = new google.maps.Marker({
+				position : { lat: position.coords.latitude, lng: position.coords.longitude },
+				map : map,
+				title : "hello world"
 		});
 		//add custom animation for the marker 
-		marker = new google.maps.Marker({
-			position : { lat: 42.983233, lng: -81.250688 },
-			map : map,
-			title : "hello world"
-		});
 	}
-	initMap();
+	if (navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(initMap, handleError);
+	}else{
+		console.log("nope");
+	}
+	function handleError(){
+		console.log('somthing went wrong');
+	}
 })();
