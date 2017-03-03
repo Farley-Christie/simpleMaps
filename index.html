@@ -3,11 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Simple Map</title>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBix1H3qjTWxT6vKVFOPCbrKSK1pxF2HwI"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<div class="mapWraper"></div>
+	<div class="preload-wrapper">
+		<i class="fa fa-spinner fa-spin"></i>
+		<span>Loading map, please wait...</span>
+	</div>
+
+	<div class="map-wrapper"></div>
+	
+	<h4 class="geocode-header">using the geocode api</h4>
+	<input type="text" class="address">
+	<button class="geocode">Code Adress!</button>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
